@@ -1,0 +1,8 @@
+export const EstadoReserva = Object.freeze({
+    PENDIENTE: "PENDIENTE",
+    CONFIRMADA: "CONFIRMADA",
+    EN_CURSO: "EN_CURSO",
+    FINALIZADA: "FINALIZADA",
+    CANCELADA: "CANCELADA",
+    NO_SE_PRESENTO: "NO_SE_PRESENTO"
+});

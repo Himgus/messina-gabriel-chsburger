@@ -4,24 +4,66 @@ Sistema de reservas de mesas para partidos y eventos de **CHS Burger**.
 
 Los clientes consultan la agenda de partidos y eventos del local, reservan una mesa y siguen el estado de su reserva. Los empleados registran señas, asignan mesas y hacen el check-in. El administrador carga los eventos y consulta reportes de ocupación.
 
-> Estado actual: estructura inicial y modelo del dominio. Todavía no hay funcionalidades implementadas.
+> Estado actual: arquitectura MVC con un CRUD de **Eventos** con persistencia en memoria (arrays).
+
+## Cómo ejecutarlo
+
+```
+cd Backend
+npm install
+npm start        # o npm run dev para reiniciar al guardar
+```
+
+El servidor escucha en `http://localhost:3000` (se puede cambiar con la variable `PORT`).
 
 ## Estructura del repositorio
 
 ```
 ├── Frontend/                 # interfaz web (todavía vacía)
 ├── Backend/
-│   ├── package.json          # "type": "module" para usar import / export
+│   ├── package.json
 │   └── src/
-│       └── models/           # clases del dominio
-│           ├── Usuario.js
-│           ├── Evento.js
-│           ├── Mesa.js
-│           ├── Reserva.js
-│           └── CambioEstado.js
+│       ├── server.js         # levanta el servidor
+│       ├── app.js            # configura Express, rutas y middlewares
+│       ├── routes/           # definición de endpoints
+│       ├── controllers/      # reciben la petición y devuelven la respuesta
+│       ├── services/         # reglas de negocio y validaciones
+│       ├── repositories/     # acceso a los datos (arrays en memoria)
+│       ├── models/           # clases del dominio
+│       ├── middlewares/      # manejo centralizado de errores y rutas inexistentes
+│       ├── responses/        # formato común de las respuestas
+│       ├── exceptions/       # AppError y sus subclases
+│       ├── enums/            # Messages, HttpStatus, TipoEvento, Sector, EstadoReserva, Rol
+│       └── utils/            # validadores y parseo de IDs
 ├── diagrama-clases.png
 └── README.md
 ```
+
+## API de Eventos
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| GET | `/api/eventos` | Lista todos los eventos |
+| GET | `/api/eventos/:id` | Obtiene un evento por ID |
+| POST | `/api/eventos` | Crea un evento |
+| PUT | `/api/eventos/:id` | Modifica un evento (solo los campos enviados) |
+| DELETE | `/api/eventos/:id` | Elimina un evento |
+
+Ejemplo de cuerpo para crear:
+
+```json
+{
+    "titulo": "Racing vs. Independiente",
+    "tipo": "PARTIDO",
+    "competencia": "Liga Profesional",
+    "fechaHora": "2026-11-01T19:00:00Z",
+    "cupo": 70,
+    "requiereSenia": true,
+    "montoSenia": 4000
+}
+```
+
+Respuesta exitosa: `{ "success": true, "data": { ... } }`. Respuesta con error: `{ "success": false, "message": "El evento no existe." }`.
 
 ## Modelo del dominio
 
@@ -132,4 +174,4 @@ classDiagram
     Reserva "1" *-- "1..*" CambioEstado : historial
 ```
 
-> Los métodos del diagrama son una guía de lo que se va a implementar más adelante. Por ahora las clases de `Backend/src/models/` solo definen sus atributos.
+> Los métodos del diagrama son una guía de lo que se va a implementar más adelante. Por ahora las clases de `Backend/src/models/` solo definen sus atributos; los valores posibles de `tipo`, `sector`, `estado` y `rol` están en `Backend/src/enums/`.

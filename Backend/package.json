@@ -2,5 +2,13 @@
   "name": "chs-burger-backend",
   "version": "0.1.0",
   "description": "Backend del sistema de reservas de CHS Burger",
-  "type": "module"
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
