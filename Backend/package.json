@@ -1,0 +1,6 @@
+{
+  "name": "chs-burger-backend",
+  "version": "0.1.0",
+  "description": "Backend del sistema de reservas de CHS Burger",
+  "type": "module"
+}
