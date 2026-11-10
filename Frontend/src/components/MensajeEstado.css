@@ -1,0 +1,37 @@
+.mensaje-estado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2.5rem 1.5rem;
+    border: 3px dashed var(--color-borde);
+    border-radius: var(--radio-grande);
+    background-color: var(--color-superficie);
+    text-align: center;
+}
+.mensaje-estado--error {
+    border-color: var(--color-acento);
+    background-color: var(--color-error-fondo);
+}
+.mensaje-estado__icono {
+    color: var(--color-principal-oscuro);
+}
+.mensaje-estado--error .mensaje-estado__icono {
+    color: var(--color-acento);
+}
+.mensaje-estado__titulo {
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+.mensaje-estado__texto {
+    max-width: 48ch;
+    color: var(--color-texto-suave);
+}
+.mensaje-estado__texto p {
+    margin: 0;
+}
+.mensaje-estado__accion {
+    margin-top: 0.75rem;
+}

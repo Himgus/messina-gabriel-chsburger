@@ -1,0 +1,52 @@
+.tabla-contenedor {
+    overflow-x: auto;
+    border: 3px solid var(--color-secundario);
+    border-radius: var(--radio-grande);
+    background-color: var(--color-superficie);
+    box-shadow: var(--sombra-marcada);
+}
+.tabla {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+}
+.tabla th,
+.tabla td {
+    padding: 0.9rem 1rem;
+    border-bottom: 2px solid var(--color-borde);
+    text-align: left;
+    vertical-align: middle;
+}
+.tabla thead th {
+    border-bottom: 3px solid var(--color-secundario);
+    background-color: var(--color-principal);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.tabla tbody tr:last-child th,
+.tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+.tabla tbody tr:hover {
+    background-color: #fff8e1;
+}
+.tabla__evento {
+    font-weight: 400;
+}
+.tabla__titulo {
+    display: block;
+    font-weight: 700;
+}
+.tabla__detalle {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--color-texto-suave);
+    font-size: 0.875rem;
+}
+.tabla__acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}

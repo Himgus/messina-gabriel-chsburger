@@ -1,0 +1,23 @@
+.reservas-tabla {
+    min-width: 860px;
+}
+.reservas-tabla__mesa {
+    min-width: 220px;
+    min-height: 38px;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.9rem;
+}
+.reservas-tabla__alerta {
+    display: inline-block;
+    margin-bottom: 0.35rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: var(--radio-chico);
+    background-color: var(--color-error-fondo);
+    color: var(--color-error);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.tabla__acciones--inicio {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}

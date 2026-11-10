@@ -1,0 +1,28 @@
+.nosotros {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem;
+    border: 3px solid var(--color-secundario);
+    border-radius: var(--radio-grande);
+    background-color: var(--color-superficie);
+    box-shadow: var(--sombra-marcada);
+}
+.nosotros__imagen {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+}
+.nosotros__texto {
+    font-size: 1.05rem;
+}
+.nosotros__texto p:last-child {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+@media (max-width: 720px) {
+    .nosotros {
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
+    }
+}

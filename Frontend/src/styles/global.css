@@ -1,0 +1,119 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+}
+h1,
+h2,
+h3,
+h4 {
+    margin: 0 0 0.5rem;
+    font-family: var(--fuente-titulos);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+}
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+h3 {
+    font-size: 1.4rem;
+}
+p {
+    margin: 0 0 1rem;
+}
+a {
+    color: inherit;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
+}
+.contenedor {
+    width: min(100% - 2rem, var(--ancho-maximo));
+    margin-inline: auto;
+}
+.visualmente-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+.saltar-contenido {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radio-chico);
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+    font-weight: 700;
+    text-decoration: none;
+}
+.saltar-contenido:focus {
+    top: 1rem;
+}
+.grilla {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.pagina {
+    padding-block: 2.5rem 4rem;
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

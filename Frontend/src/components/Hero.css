@@ -1,0 +1,61 @@
+.hero {
+    padding-block: 2.5rem 3.5rem;
+    background-color: var(--color-secundario);
+    background-image: radial-gradient(circle at 20% 0%, rgba(255, 195, 0, 0.18), transparent 55%);
+    color: var(--color-texto-claro);
+}
+.hero__contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.hero__imagen {
+    height: clamp(160px, 32vw, 360px);
+    color: #6b6b6b;
+}
+.hero__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+.hero__antetitulo {
+    margin: 0;
+    color: var(--color-principal);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+.hero__titulo {
+    margin: 0;
+    max-width: 22ch;
+    color: var(--color-texto-claro);
+}
+.hero__linea {
+    display: block;
+    width: min(60%, 360px);
+    height: 6px;
+    border-radius: 3px;
+    background-color: var(--color-principal);
+}
+.hero__texto {
+    max-width: 52ch;
+    margin: 0;
+    color: #e0e0e0;
+}
+.hero .lista-datos {
+    width: min(100%, 720px);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    text-align: left;
+}
+.hero .evento-etiquetas {
+    justify-content: center;
+}
+.hero__cta {
+    margin-top: 0.5rem;
+    border-color: var(--color-principal);
+}
+.hero__cta:hover:not(:disabled) {
+    box-shadow: 4px 4px 0 var(--color-principal);
+}

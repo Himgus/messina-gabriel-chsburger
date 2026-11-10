@@ -1,0 +1,12 @@
+.panel-reservas__selector {
+    max-width: 520px;
+    margin-bottom: 1.5rem;
+}
+.panel-reservas__filtros {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1.5rem 0 1rem;
+}
+.panel-reservas__filtros .campo {
+    width: min(100%, 240px);
+}

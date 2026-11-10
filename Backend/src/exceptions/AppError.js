@@ -11,6 +11,16 @@ export class BadRequestError extends AppError {
         super(message, HttpStatus.BAD_REQUEST);
     }
 }
+export class UnauthorizedError extends AppError {
+    constructor(message) {
+        super(message, HttpStatus.UNAUTHORIZED);
+    }
+}
+export class ForbiddenError extends AppError {
+    constructor(message) {
+        super(message, HttpStatus.FORBIDDEN);
+    }
+}
 export class NotFoundError extends AppError {
     constructor(message) {
         super(message, HttpStatus.NOT_FOUND);

@@ -1,0 +1,39 @@
+.panel-reserva {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.75rem;
+    border: 3px solid var(--color-secundario);
+    border-radius: var(--radio-grande);
+    background-color: var(--color-principal);
+    box-shadow: var(--sombra-marcada);
+}
+.panel-reserva p {
+    margin: 0;
+}
+.panel-reserva__titulo {
+    margin: 0;
+    font-size: 2rem;
+}
+.panel-reserva__lugares {
+    font-weight: 700;
+}
+.panel-reserva__reglas {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.925rem;
+}
+.panel-reserva__reglas li + li {
+    margin-top: 0.25rem;
+}
+.panel-reserva__botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.panel-reserva .campo__control {
+    background-color: var(--color-superficie);
+}
+.panel-reserva .formulario__acciones .boton {
+    flex: 1;
+}

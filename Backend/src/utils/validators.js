@@ -5,4 +5,6 @@ export const esEnteroPositivo = (valor) => Number.isInteger(valor) && valor > 0;
 export const esNumeroPositivo = (valor) => typeof valor === "number" && Number.isFinite(valor) && valor > 0;
 export const esFechaValida = (valor) => (typeof valor === "string" || valor instanceof Date) && !Number.isNaN(new Date(valor).getTime());
 export const esValorDeEnum = (valor, enumeracion) => Object.values(enumeracion).includes(valor);
+export const esEmail = (valor) => typeof valor === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());
+export const esEnteroEnRango = (valor, minimo, maximo) => Number.isInteger(valor) && valor >= minimo && valor <= maximo;
 export const esObjetoPlano = (valor) => typeof valor === "object" && valor !== null && !Array.isArray(valor);

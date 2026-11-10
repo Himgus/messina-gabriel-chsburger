@@ -1,9 +1,13 @@
 import { Router } from "express";
 import eventoController from "../controllers/EventoController.js";
+import { autenticar } from "../middlewares/autenticar.js";
+import { autorizar } from "../middlewares/autorizar.js";
+import { Rol } from "../enums/Rol.js";
 const router = Router();
+const soloAdministrador = [autenticar, autorizar(Rol.ADMINISTRADOR)];
 router.get("/", eventoController.getAll);
 router.get("/:id", eventoController.getById);
-router.post("/", eventoController.create);
-router.put("/:id", eventoController.update);
-router.delete("/:id", eventoController.delete);
+router.post("/", soloAdministrador, eventoController.create);
+router.put("/:id", soloAdministrador, eventoController.update);
+router.delete("/:id", soloAdministrador, eventoController.delete);
 export default router;

@@ -1,0 +1,29 @@
+.encabezado-pagina {
+    margin-bottom: 2rem;
+}
+.encabezado-pagina__volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-underline-offset: 3px;
+}
+.encabezado-pagina__volver:hover {
+    color: var(--color-acento-oscuro);
+}
+.encabezado-pagina__fila {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.encabezado-pagina__titulo {
+    margin: 0;
+}
+.encabezado-pagina__descripcion {
+    max-width: 60ch;
+    margin: 0.5rem 0 0;
+    color: var(--color-texto-suave);
+}

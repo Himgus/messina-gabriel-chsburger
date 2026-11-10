@@ -1,0 +1,42 @@
+.evento-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 3px solid var(--color-secundario);
+    border-radius: var(--radio-grande);
+    background-color: var(--color-superficie);
+    box-shadow: var(--sombra-marcada);
+    transition: transform var(--transicion), box-shadow var(--transicion);
+}
+.evento-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--color-secundario);
+}
+.evento-card__cabecera {
+    padding: 0.85rem 1.25rem;
+    border-bottom: 3px solid var(--color-secundario);
+    background-color: var(--color-principal);
+}
+.evento-etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+.evento-card__cuerpo {
+    flex: 1;
+    padding: 1.25rem;
+}
+.evento-card__titulo {
+    font-size: 1.6rem;
+}
+.evento-card__competencia {
+    margin-bottom: 1rem;
+    color: var(--color-texto-suave);
+    font-weight: 500;
+}
+.evento-card__pie {
+    padding: 0 1.25rem 1.25rem;
+}
+.evento-card__boton {
+    width: 100%;
+}

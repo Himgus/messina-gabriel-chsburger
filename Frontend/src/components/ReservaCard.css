@@ -1,0 +1,56 @@
+.reserva-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 3px solid var(--color-secundario);
+    border-radius: var(--radio-grande);
+    background-color: var(--color-superficie);
+    box-shadow: var(--sombra-marcada);
+}
+.reserva-card--cerrada {
+    box-shadow: none;
+    border-color: #bdbdbd;
+}
+.reserva-card__cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.85rem 1.25rem;
+    border-bottom: 2px solid var(--color-borde);
+}
+.reserva-card__numero {
+    color: var(--color-texto-suave);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.reserva-card__cuerpo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.25rem;
+}
+.reserva-card__titulo {
+    margin: 0;
+    font-size: 1.5rem;
+}
+.reserva-card__nota {
+    margin: 0;
+    color: var(--color-texto-suave);
+    font-size: 0.925rem;
+}
+.reserva-card__aviso {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border-left: 6px solid var(--color-principal);
+    border-radius: var(--radio-chico);
+    background-color: #fff8e1;
+    font-size: 0.925rem;
+}
+.reserva-card__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 1.25rem 1.25rem;
+}

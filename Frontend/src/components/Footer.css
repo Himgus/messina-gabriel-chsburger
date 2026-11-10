@@ -1,0 +1,41 @@
+.footer {
+    border-top: 6px solid var(--color-principal);
+    background-color: var(--color-secundario);
+    color: #e8e8e8;
+}
+.footer__contenido {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    padding-block: 3rem 2rem;
+}
+.footer__titulo {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: var(--color-principal);
+}
+.footer__columna .footer__titulo + .footer__lista + .footer__titulo {
+    margin-top: 1.25rem;
+}
+.footer__lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.footer__lista a {
+    text-underline-offset: 3px;
+}
+.footer__lista a:hover {
+    color: var(--color-principal);
+}
+.footer__legal {
+    margin: 0;
+    padding: 1rem;
+    border-top: 1px solid #333333;
+    font-size: 0.875rem;
+    text-align: center;
+    color: #bdbdbd;
+}

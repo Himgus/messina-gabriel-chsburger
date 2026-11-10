@@ -1,0 +1,23 @@
+{
+  "name": "chs-burger-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Frontend del sistema de reservas de CHS Burger",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.3.0",
+    "oxlint": "^1.93.0",
+    "vite": "^8.3.7"
+  }
+}

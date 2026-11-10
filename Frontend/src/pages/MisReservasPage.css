@@ -1,0 +1,8 @@
+.mis-reservas__grupo + .mis-reservas__grupo,
+.mensaje-estado + .mis-reservas__grupo {
+    margin-top: 3rem;
+}
+.mis-reservas__titulo {
+    margin-bottom: 1.25rem;
+    font-size: 1.8rem;
+}

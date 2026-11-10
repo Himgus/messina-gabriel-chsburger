@@ -1,5 +1,13 @@
 import { Router } from "express";
+import authRoutes from "./authRoutes.js";
 import eventoRoutes from "./eventoRoutes.js";
+import reservaRoutes from "./reservaRoutes.js";
+import mesaRoutes from "./mesaRoutes.js";
+import reporteRoutes from "./reporteRoutes.js";
 const router = Router();
+router.use("/auth", authRoutes);
 router.use("/eventos", eventoRoutes);
+router.use("/reservas", reservaRoutes);
+router.use("/mesas", mesaRoutes);
+router.use("/reportes", reporteRoutes);
 export default router;
