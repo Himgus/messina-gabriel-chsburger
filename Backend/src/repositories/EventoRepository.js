@@ -5,7 +5,8 @@ const eventos = [
     new Evento(1, "Boca vs. River", TipoEvento.PARTIDO, "Liga Profesional", new Date("2026-12-06T20:00:00.000Z"), 80, true, 5000, true, true),
     new Evento(2, "Argentina vs. Brasil", TipoEvento.PARTIDO, "Eliminatorias", new Date("2026-12-15T23:30:00.000Z"), 100, true, 8000, false, true),
     new Evento(3, "Noche de rock en vivo", TipoEvento.SHOW, null, new Date("2026-12-12T01:00:00.000Z"), 60, false, 0, false, true),
-    new Evento(4, "Racing vs. Independiente", TipoEvento.PARTIDO, "Liga Profesional", minutosDesdeAhora(-30), 70, false, 0, false, true)
+    new Evento(4, "Racing vs. Independiente", TipoEvento.PARTIDO, "Liga Profesional", minutosDesdeAhora(15), 70, false, 0, false, true),
+    new Evento(5, "San Lorenzo vs. Huracán", TipoEvento.PARTIDO, "Liga Profesional", minutosDesdeAhora(-7 * 24 * 60), 70, false, 0, false, true)
 ];
 let ultimoId = eventos.length;
 class EventoRepository {

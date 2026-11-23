@@ -1,4 +1,5 @@
 import authService from "../services/AuthService.js";
+import usuarioService from "../services/UsuarioService.js";
 import { successResponse } from "../responses/ApiResponse.js";
 import { HttpStatus } from "../enums/HttpStatus.js";
 class AuthController {
@@ -11,7 +12,15 @@ class AuthController {
         return successResponse(res, sesion);
     }
     perfil(req, res) {
-        return successResponse(res, authService.sinContrasena(req.usuario));
+        return successResponse(res, usuarioService.sinContrasena(req.usuario));
+    }
+    eliminarCuenta(req, res) {
+        const resultado = usuarioService.eliminarCuenta(req.usuario, req.body);
+        return successResponse(res, resultado);
+    }
+    actualizarPerfil(req, res) {
+        const usuario = usuarioService.actualizarPerfil(req.usuario, req.body);
+        return successResponse(res, usuario);
     }
 }
 export default new AuthController();

@@ -15,3 +15,6 @@ export function updateEvento(id, evento) {
 export function deleteEvento(id) {
     return request(`${RECURSO}/${id}`, { method: "DELETE" });
 }
+export function suspenderEvento(id, motivo) {
+    return request(`${RECURSO}/${id}/suspender`, { method: "PATCH", body: { motivo } });
+}

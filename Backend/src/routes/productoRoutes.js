@@ -1,0 +1,15 @@
+import { Router } from "express";
+import productoController from "../controllers/ProductoController.js";
+import { autenticar } from "../middlewares/autenticar.js";
+import { autorizar } from "../middlewares/autorizar.js";
+import { subirImagen } from "../middlewares/subirImagen.js";
+import { Rol } from "../enums/Rol.js";
+const router = Router();
+const soloAdministrador = [autenticar, autorizar(Rol.ADMINISTRADOR)];
+router.get("/", productoController.getAll);
+router.get("/:id", productoController.getById);
+router.post("/imagen", soloAdministrador, subirImagen, productoController.subirImagen);
+router.post("/", soloAdministrador, productoController.create);
+router.put("/:id", soloAdministrador, productoController.update);
+router.delete("/:id", soloAdministrador, productoController.delete);
+export default router;

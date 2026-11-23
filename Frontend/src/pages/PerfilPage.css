@@ -1,0 +1,13 @@
+.perfil__grilla {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.perfil__titulo {
+    margin: 0;
+    font-size: 1.6rem;
+}
+.perfil__peligro {
+    border-color: var(--color-acento);
+    box-shadow: 6px 6px 0 var(--color-acento);
+}

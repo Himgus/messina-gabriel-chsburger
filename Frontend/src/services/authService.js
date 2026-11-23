@@ -9,3 +9,9 @@ export function registrarse(datos) {
 export function getPerfil() {
     return request(`${RECURSO}/perfil`);
 }
+export function updatePerfil(datos) {
+    return request(`${RECURSO}/perfil`, { method: "PUT", body: datos });
+}
+export function deletePerfil(contrasena) {
+    return request(`${RECURSO}/perfil`, { method: "DELETE", body: { contrasena } });
+}

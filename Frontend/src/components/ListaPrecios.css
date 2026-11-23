@@ -1,0 +1,38 @@
+.lista-precios {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 1.5rem 1.75rem;
+    border: 3px solid var(--color-secundario);
+    border-radius: var(--radio-grande);
+    background-color: var(--color-principal);
+    box-shadow: var(--sombra-marcada);
+    list-style: none;
+}
+.lista-precios__item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+.lista-precios__item--agotado .lista-precios__nombre,
+.lista-precios__item--agotado .lista-precios__precio {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+.lista-precios__nombre {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.lista-precios__puntos {
+    flex: 1;
+    border-bottom: 2px dotted var(--color-secundario);
+}
+.lista-precios__precio {
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    font-weight: 400;
+}

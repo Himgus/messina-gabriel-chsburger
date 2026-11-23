@@ -1,11 +1,14 @@
 import express from "express";
 import cors from "cors";
 import routes from "./routes/index.js";
+import { DIRECTORIO_PUBLICO, DIRECTORIO_SUBIDAS } from "./utils/archivos.js";
 import { notFoundHandler } from "./middlewares/notFoundHandler.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 const app = express();
 app.use(cors({ origin: process.env.FRONTEND_URL ?? "http://localhost:5173" }));
 app.use(express.json());
+app.use(express.static(DIRECTORIO_PUBLICO));
+app.use("/uploads", express.static(DIRECTORIO_SUBIDAS));
 app.use("/api", routes);
 app.use(notFoundHandler);
 app.use(errorHandler);

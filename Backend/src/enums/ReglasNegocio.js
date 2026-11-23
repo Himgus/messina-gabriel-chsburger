@@ -1,5 +1,4 @@
 export const ReglasNegocio = Object.freeze({
-    CAPACIDAD_LOCAL: 200,
     TITULO_MAX: 80,
     MIN_PERSONAS: 1,
     MAX_PERSONAS: 10,
@@ -7,6 +6,7 @@ export const ReglasNegocio = Object.freeze({
     HORAS_CIERRE_RESERVAS: 1,
     HORAS_LIMITE_CLIENTE: 2,
     MINUTOS_TOLERANCIA: 20,
+    HORAS_PLAZO_SENIA: 24,
     AUSENCIAS_PARA_SENIA: 3,
     DIAS_AUSENCIAS: 90,
     CONTRASENA_MIN: 8,

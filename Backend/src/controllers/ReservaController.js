@@ -8,7 +8,7 @@ class ReservaController {
         return successResponse(res, reservas);
     }
     getMias(req, res) {
-        const reservas = reservaService.listarDelUsuario(req.usuario);
+        const reservas = reservaService.listarDeUsuario(req.usuario.id);
         return successResponse(res, reservas);
     }
     getById(req, res) {

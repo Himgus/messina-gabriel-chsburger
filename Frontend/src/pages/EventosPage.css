@@ -1,0 +1,40 @@
+.eventos__pasos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 1rem;
+    margin: 0 0 3rem;
+    padding: 0;
+    list-style: none;
+}
+.eventos__paso {
+    display: flex;
+    gap: 0.9rem;
+    padding: 1.1rem 1.25rem;
+    border: 3px solid var(--color-secundario);
+    border-radius: var(--radio);
+    background-color: var(--color-principal);
+}
+.eventos__numero {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+}
+.eventos__paso-titulo {
+    margin: 0;
+    font-weight: 700;
+}
+.eventos__paso-texto {
+    margin: 0;
+    font-size: 0.925rem;
+}
+.eventos__titulo {
+    margin-bottom: 1.25rem;
+    font-size: 1.8rem;
+}

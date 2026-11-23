@@ -1,5 +1,5 @@
 class Usuario {
-    constructor(id, nombre, apellido, email, contrasena, telefono, rol, fechaRegistro, activo) {
+    constructor(id, nombre, apellido, email, contrasena, telefono, rol, fechaRegistro, activo, fechaBaja = null) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -9,6 +9,7 @@ class Usuario {
         this.rol = rol;
         this.fechaRegistro = fechaRegistro;
         this.activo = activo;
+        this.fechaBaja = fechaBaja;
     }
 }
 export default Usuario;

@@ -156,7 +156,7 @@ function SeccionReservas({ evento }) {
             {!cargando && !error && visibles.length > 0 && (
                 <ReservasTable
                     reservas={visibles}
-                    mesas={mesas ?? []}
+                    mesas={(mesas ?? []).filter((mesa) => mesa.activa)}
                     accionEnCurso={accionEnCurso}
                     onAccion={solicitarAccion}
                     onAsignarMesa={actualizarMesa}

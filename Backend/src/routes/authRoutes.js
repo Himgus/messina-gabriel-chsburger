@@ -5,4 +5,6 @@ const router = Router();
 router.post("/registro", authController.registrar);
 router.post("/login", authController.iniciarSesion);
 router.get("/perfil", autenticar, authController.perfil);
+router.put("/perfil", autenticar, authController.actualizarPerfil);
+router.delete("/perfil", autenticar, authController.eliminarCuenta);
 export default router;

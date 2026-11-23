@@ -1,7 +1,8 @@
 import Button from "./Button.jsx";
 import EventoEtiquetas from "./EventoEtiquetas.jsx";
+import { esFechaFutura } from "../utils/fechas.js";
 import { formatearFechaCorta, formatearHora, formatearMoneda } from "../utils/formatters.js";
-export default function EventosTable({ eventos, onEliminar }) {
+export default function EventosTable({ eventos, onSuspender, onEliminar }) {
     return (
         <div className="tabla-contenedor" role="region" aria-labelledby="tabla-eventos-titulo" tabIndex={0}>
             <table className="tabla">
@@ -36,6 +37,11 @@ export default function EventosTable({ eventos, onEliminar }) {
                                     <Button to={`/admin/eventos/${evento.id}/editar`} variante="secundario" tamanio="chico">
                                         Editar<span className="visualmente-oculto"> {evento.titulo}</span>
                                     </Button>
+                                    {evento.activo && esFechaFutura(evento.fechaHora) && (
+                                        <Button variante="secundario" tamanio="chico" onClick={() => onSuspender(evento)}>
+                                            Suspender<span className="visualmente-oculto"> {evento.titulo}</span>
+                                        </Button>
+                                    )}
                                     <Button variante="peligro" tamanio="chico" onClick={() => onEliminar(evento)}>
                                         Eliminar<span className="visualmente-oculto"> {evento.titulo}</span>
                                     </Button>

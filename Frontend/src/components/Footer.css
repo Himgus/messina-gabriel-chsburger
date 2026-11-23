@@ -39,3 +39,11 @@
     text-align: center;
     color: #bdbdbd;
 }
+.footer__aviso {
+    margin: 0;
+    color: #bdbdbd;
+    font-size: 0.9rem;
+}
+.footer__columna .footer__aviso + .footer__titulo {
+    margin-top: 1.25rem;
+}

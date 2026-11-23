@@ -8,6 +8,7 @@ import MensajeEstado from "../components/MensajeEstado.jsx";
 import { useRecurso } from "../hooks/useRecurso.js";
 import { useToast } from "../hooks/useToast.js";
 import { useTituloPagina } from "../hooks/useTituloPagina.js";
+import { getConfiguracion } from "../services/configuracionService.js";
 import { createEvento, getEventoById, updateEvento } from "../services/eventoService.js";
 import { eventoAFormulario, VALORES_INICIALES_EVENTO } from "../utils/eventoFormulario.js";
 const RUTA_LISTADO = "/admin/eventos";
@@ -18,8 +19,12 @@ export default function EventoFormPage() {
     useTituloPagina(titulo);
     const navigate = useNavigate();
     const { mostrarExito, mostrarError } = useToast();
-    const cargarEvento = useCallback(() => (esNuevo ? Promise.resolve(null) : getEventoById(id)), [esNuevo, id]);
-    const { datos: evento, cargando, error, recargar } = useRecurso(cargarEvento);
+    const cargarDatos = useCallback(async () => {
+        const [configuracion, evento] = await Promise.all([getConfiguracion(), esNuevo ? null : getEventoById(id)]);
+        return { configuracion, evento };
+    }, [esNuevo, id]);
+    const { datos, cargando, error, recargar } = useRecurso(cargarDatos);
+    const evento = datos?.evento;
     const guardar = async (datos) => {
         try {
             if (esNuevo) {
@@ -52,11 +57,12 @@ export default function EventoFormPage() {
                     <p>{error}</p>
                 </MensajeEstado>
             )}
-            {!cargando && !error && (
+            {!cargando && datos && (
                 <EventoForm
                     key={evento?.id ?? "nuevo"}
                     valoresIniciales={evento ? eventoAFormulario(evento) : VALORES_INICIALES_EVENTO}
                     esNuevo={esNuevo}
+                    capacidadLocal={datos.configuracion.capacidadLocal}
                     textoBoton={esNuevo ? "Crear evento" : "Guardar cambios"}
                     onSubmit={guardar}
                     onCancelar={() => navigate(RUTA_LISTADO)}

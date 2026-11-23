@@ -8,9 +8,9 @@ import { Rol } from "../utils/constantes.js";
 import logo from "../assets/logo.svg";
 import "./Navbar.css";
 const ENLACES_PUBLICOS = [
-    { texto: "Agenda", destino: "/#agenda" },
+    { texto: "Menú", destino: "/menu", ruta: true },
+    { texto: "Eventos", destino: "/eventos", ruta: true },
     { texto: "Nosotros", destino: "/#nosotros" },
-    { texto: "Productos", destino: "/#productos" },
     { texto: "Contacto", destino: "#contacto" }
 ];
 const ENLACES_POR_ROL = {
@@ -18,8 +18,7 @@ const ENLACES_POR_ROL = {
     [Rol.EMPLEADO]: [{ texto: "Panel de reservas", destino: "/panel/reservas" }],
     [Rol.ADMINISTRADOR]: [
         { texto: "Panel de reservas", destino: "/panel/reservas" },
-        { texto: "Eventos", destino: "/admin/eventos" },
-        { texto: "Reportes", destino: "/admin/reportes" }
+        { texto: "Administración", destino: "/admin" }
     ]
 };
 export default function Navbar() {
@@ -67,7 +66,9 @@ export default function Navbar() {
                     <ul className="navbar__enlaces">
                         {ENLACES_PUBLICOS.map((enlace) => (
                             <li key={enlace.destino}>
-                                {enlace.destino.startsWith("#") ? (
+                                {enlace.ruta ? (
+                                    <NavLink to={enlace.destino} className="navbar__enlace navbar__enlace--seccion">{enlace.texto}</NavLink>
+                                ) : enlace.destino.startsWith("#") ? (
                                     <a href={enlace.destino} className="navbar__enlace">{enlace.texto}</a>
                                 ) : (
                                     <Link to={enlace.destino} className="navbar__enlace">{enlace.texto}</Link>
@@ -85,7 +86,9 @@ export default function Navbar() {
                     <div className="navbar__cuenta">
                         {usuario ? (
                             <>
-                                <span className="navbar__saludo">Hola, {usuario.nombre}</span>
+                                <NavLink to="/perfil" className="navbar__saludo">
+                                    Hola, {usuario.nombre}<span className="visualmente-oculto"> (mi perfil)</span>
+                                </NavLink>
                                 <Button variante="principal" tamanio="chico" onClick={salir}>
                                     Salir
                                 </Button>

@@ -27,7 +27,7 @@ export default function EventoDetallePage() {
                     accion={
                         <div className="detalle__acciones-error">
                             <Button variante="secundario" onClick={recargar}>Reintentar</Button>
-                            <Button to="/#agenda" variante="principal">Ver la agenda</Button>
+                            <Button to="/eventos" variante="principal">Ver los eventos</Button>
                         </div>
                     }
                 >
@@ -36,7 +36,7 @@ export default function EventoDetallePage() {
             )}
             {!cargando && evento && (
                 <article className="detalle">
-                    <EncabezadoPagina titulo={evento.titulo} descripcion={evento.competencia} volverA="/#agenda" textoVolver="Volver a la agenda" />
+                    <EncabezadoPagina titulo={evento.titulo} descripcion={evento.competencia} volverA="/eventos" textoVolver="Volver a los eventos" />
                     <div className="detalle__grilla">
                         <div className="detalle__principal">
                             <EventoEtiquetas evento={evento} />

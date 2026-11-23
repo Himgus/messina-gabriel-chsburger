@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useToast } from "./useToast.js";
-export function useRecurso(cargar) {
+export function useRecurso(cargar, { notificarErrores = true } = {}) {
     const [estado, setEstado] = useState({ datos: null, cargando: true, error: null });
     const ultimaPeticion = useRef(0);
     const { mostrarError } = useToast();
@@ -16,10 +16,12 @@ export function useRecurso(cargar) {
         } catch (error) {
             if (peticion === ultimaPeticion.current) {
                 setEstado({ datos: null, cargando: false, error: error.message });
-                mostrarError(error.message);
+                if (notificarErrores) {
+                    mostrarError(error.message);
+                }
             }
         }
-    }, [cargar, mostrarError]);
+    }, [cargar, mostrarError, notificarErrores]);
     useEffect(() => {
         recargar();
     }, [recargar]);

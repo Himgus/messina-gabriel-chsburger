@@ -40,5 +40,10 @@ export function useFormulario({ valoresIniciales, validar, onSubmit }) {
             setEnviando(false);
         }
     };
-    return { valores, errores, enviando, formulario, handleChange, handleBlur, handleSubmit };
+    const reiniciar = () => {
+        setValores(valoresIniciales);
+        setErrores({});
+        setTocados({});
+    };
+    return { valores, errores, enviando, formulario, handleChange, handleBlur, handleSubmit, reiniciar };
 }

@@ -1,5 +1,6 @@
 import Button from "./Button.jsx";
 import EstadoReservaEtiqueta from "./EstadoReservaEtiqueta.jsx";
+import HistorialReserva from "./HistorialReserva.jsx";
 import ListaDatos from "./ListaDatos.jsx";
 import { EstadoReserva, ESTADOS_ACTIVOS } from "../utils/constantes.js";
 import { formatearFecha, formatearHora, formatearMesa, formatearMoneda, formatearPersonas } from "../utils/formatters.js";
@@ -16,12 +17,14 @@ function obtenerDatos(reserva) {
         items.push({
             icono: "dinero",
             etiqueta: "Seña",
-            valor: reserva.seniaRegistrada ? "Registrada" : "Pendiente"
+            valor: reserva.seniaRegistrada
+                ? "Registrada"
+                : ESTADOS_ACTIVOS.includes(reserva.estado) ? "Pendiente" : "No registrada"
         });
     }
     return items;
 }
-export default function ReservaCard({ reserva, onCancelar }) {
+export default function ReservaCard({ reserva, onCancelar, soloLectura = false }) {
     const { evento } = reserva;
     const activa = ESTADOS_ACTIVOS.includes(reserva.estado);
     return (
@@ -46,11 +49,12 @@ export default function ReservaCard({ reserva, onCancelar }) {
                 {reserva.estado === EstadoReserva.CANCELADA && reserva.motivoCancelacion && (
                     <p className="reserva-card__nota"><strong>Motivo:</strong> {reserva.motivoCancelacion}</p>
                 )}
-                {activa && !reserva.puedeModificarse && (
+                {activa && !reserva.puedeModificarse && !soloLectura && (
                     <p className="reserva-card__nota">Faltan menos de 2 horas para el evento: para cambios comunicate con el local.</p>
                 )}
+                <HistorialReserva historial={reserva.historial} />
             </div>
-            {reserva.puedeModificarse && (
+            {reserva.puedeModificarse && !soloLectura && (
                 <footer className="reserva-card__acciones">
                     <Button to={`/mis-reservas/${reserva.id}/editar`} variante="secundario" tamanio="chico">
                         Modificar<span className="visualmente-oculto"> reserva para {evento?.titulo}</span>

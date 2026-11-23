@@ -46,8 +46,7 @@ export const ETIQUETAS_SECTOR = Object.freeze({
 });
 export const LIMITES_EVENTO = Object.freeze({
     TITULO_MAX: 80,
-    COMPETENCIA_MAX: 60,
-    CUPO_MAX: 200
+    COMPETENCIA_MAX: 60
 });
 export const LIMITES_RESERVA = Object.freeze({
     MIN_PERSONAS: 1,
@@ -55,3 +54,76 @@ export const LIMITES_RESERVA = Object.freeze({
     OBSERVACIONES_MAX: 200,
     MOTIVO_MAX: 200
 });
+export const ETIQUETAS_ROL = Object.freeze({
+    [Rol.CLIENTE]: "Cliente",
+    [Rol.EMPLEADO]: "Empleado",
+    [Rol.ADMINISTRADOR]: "Administrador"
+});
+export const LIMITES_MESA = Object.freeze({
+    NUMERO_MAX: 999,
+    CAPACIDAD_MAX: 20
+});
+export const LIMITES_CONFIGURACION = Object.freeze({
+    CAPACIDAD_MAX: 1000,
+    HORARIOS_MAX: 7,
+    TEXTO_HORARIO_MAX: 40
+});
+export const EVENTO_CONFIGURACION_ACTUALIZADA = "chs-burger:configuracion-actualizada";
+export const CategoriaProducto = Object.freeze({
+    BURGER: "BURGER",
+    LINEA_DOBLE: "LINEA_DOBLE",
+    COMBO: "COMBO",
+    BALDAZO: "BALDAZO",
+    ENTRADA: "ENTRADA",
+    BEBIDA: "BEBIDA"
+});
+export const CATEGORIAS_MENU = Object.freeze([
+    {
+        valor: CategoriaProducto.BURGER,
+        etiqueta: "Burgers",
+        ancla: "burgers",
+        descripcion: "Panes de 12 cm y carnes de 130 g. Todas vienen con salsa CHS y papas chicas de 80 g."
+    },
+    {
+        valor: CategoriaProducto.LINEA_DOBLE,
+        etiqueta: "Línea doble",
+        ancla: "linea-doble",
+        descripcion: "¡Aún más poderosas!"
+    },
+    {
+        valor: CategoriaProducto.COMBO,
+        etiqueta: "Combos",
+        ancla: "combos",
+        descripcion: "Para resolver de una: burger, papas y bebida."
+    },
+    {
+        valor: CategoriaProducto.BALDAZO,
+        etiqueta: "Baldazos y especiales",
+        ancla: "baldazos",
+        descripcion: "Los que nos hicieron famosos. Ideales para compartir."
+    },
+    {
+        valor: CategoriaProducto.ENTRADA,
+        etiqueta: "Entradas",
+        ancla: "entradas",
+        descripcion: "Para picar mientras empieza el partido."
+    },
+    {
+        valor: CategoriaProducto.BEBIDA,
+        etiqueta: "Bebidas",
+        ancla: "bebidas",
+        descripcion: ""
+    }
+]);
+export const ETIQUETAS_CATEGORIA = Object.freeze(
+    Object.fromEntries(CATEGORIAS_MENU.map((categoria) => [categoria.valor, categoria.etiqueta]))
+);
+export const LIMITES_PRODUCTO = Object.freeze({
+    NOMBRE_MAX: 60,
+    DESCRIPCION_MAX: 300,
+    PRECIO_MAX: 1000000,
+    OPCIONES_MAX: 8,
+    DESTACADOS_MAX: 4,
+    IMAGEN_MAX_MB: 3
+});
+export const TIPOS_IMAGEN = Object.freeze(["image/png", "image/jpeg", "image/webp"]);

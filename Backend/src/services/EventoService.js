@@ -1,9 +1,12 @@
 import eventoRepository from "../repositories/EventoRepository.js";
 import reservaRepository from "../repositories/ReservaRepository.js";
+import configuracionRepository from "../repositories/ConfiguracionRepository.js";
+import reservaService from "./ReservaService.js";
 import { BadRequestError, NotFoundError, ConflictError } from "../exceptions/AppError.js";
 import { Messages } from "../enums/Messages.js";
 import { TipoEvento } from "../enums/TipoEvento.js";
 import { ReglasNegocio } from "../enums/ReglasNegocio.js";
+import { horasHasta } from "../utils/fechas.js";
 import {
     esTextoNoVacio,
     esTexto,
@@ -61,6 +64,22 @@ class EventoService {
         this.#verificarDuplicado(evento, id);
         return this.conLugares(eventoRepository.update(id, evento));
     }
+    suspender(usuario, id, body) {
+        const evento = this.buscar(id);
+        if (!evento.activo) {
+            throw new BadRequestError(Messages.EVENTO_YA_SUSPENDIDO);
+        }
+        if (horasHasta(evento.fechaHora) <= 0) {
+            throw new BadRequestError(Messages.EVENTO_FINALIZADO);
+        }
+        const motivo = esObjetoPlano(body) && esTextoNoVacio(body.motivo) ? body.motivo.trim() : "";
+        if (!motivo || motivo.length > ReglasNegocio.OBSERVACIONES_MAX) {
+            throw new BadRequestError(Messages.INVALID_MOTIVO_SUSPENSION);
+        }
+        const reservasCanceladas = reservaService.cancelarPorSuspension(evento.id, usuario.id, `Evento suspendido: ${motivo}`);
+        eventoRepository.update(evento.id, { activo: false, destacado: false });
+        return { ...this.conLugares(evento), reservasCanceladas };
+    }
     delete(id) {
         this.buscar(id);
         if (reservaRepository.findActivasByEvento(id).length > 0) {
@@ -97,8 +116,9 @@ class EventoService {
         if (!esFechaValida(datos.fechaHora)) {
             throw new BadRequestError(Messages.INVALID_FECHA_HORA);
         }
-        if (!esEnteroEnRango(datos.cupo, 1, ReglasNegocio.CAPACIDAD_LOCAL)) {
-            throw new BadRequestError(Messages.INVALID_CUPO);
+        const { capacidadLocal } = configuracionRepository.get();
+        if (!esEnteroEnRango(datos.cupo, 1, capacidadLocal)) {
+            throw new BadRequestError(`${Messages.INVALID_CUPO} (${capacidadLocal} personas).`);
         }
         if (!esBooleano(datos.requiereSenia)) {
             throw new BadRequestError(Messages.INVALID_REQUIERE_SENIA);

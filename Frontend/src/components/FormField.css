@@ -19,6 +19,11 @@
     color: var(--color-texto);
     transition: box-shadow var(--transicion), border-color var(--transicion);
 }
+.campo__control[readonly] {
+    border-style: dashed;
+    background-color: #f3f1ec;
+    color: var(--color-texto-suave);
+}
 textarea.campo__control {
     min-height: 96px;
     resize: vertical;

@@ -7,10 +7,10 @@ import { formularioAEvento } from "../utils/eventoFormulario.js";
 import { aInputFechaHora } from "../utils/fechas.js";
 import { validarEvento } from "../utils/validarEvento.js";
 const OPCIONES_TIPO = Object.entries(ETIQUETAS_TIPO_EVENTO).map(([valor, etiqueta]) => ({ valor, etiqueta }));
-export default function EventoForm({ valoresIniciales, esNuevo, textoBoton, onSubmit, onCancelar }) {
+export default function EventoForm({ valoresIniciales, esNuevo, capacidadLocal, textoBoton, onSubmit, onCancelar }) {
     const { valores, errores, enviando, formulario, handleChange, handleBlur, handleSubmit } = useFormulario({
         valoresIniciales,
-        validar: (valoresActuales) => validarEvento(valoresActuales, { esNuevo }),
+        validar: (valoresActuales) => validarEvento(valoresActuales, { esNuevo, capacidadLocal }),
         onSubmit: (valoresActuales) => onSubmit(formularioAEvento(valoresActuales))
     });
     return (
@@ -78,10 +78,10 @@ export default function EventoForm({ valoresIniciales, esNuevo, textoBoton, onSu
                         onBlur={handleBlur}
                         error={errores.cupo}
                         min="1"
-                        max={LIMITES_EVENTO.CUPO_MAX}
+                        max={capacidadLocal}
                         step="1"
                         inputMode="numeric"
-                        ayuda={`Máximo ${LIMITES_EVENTO.CUPO_MAX} personas.`}
+                        ayuda={`Máximo ${capacidadLocal} personas (capacidad del local).`}
                         requerido
                     />
                 </div>

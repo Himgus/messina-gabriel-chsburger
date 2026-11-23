@@ -57,7 +57,7 @@ export default function MisReservasPage() {
                 titulo="Mis reservas"
                 descripcion="Consultá el estado de tus reservas. Podés modificarlas o cancelarlas hasta 2 horas antes del evento."
             >
-                <Button to="/#agenda" variante="accion">Nueva reserva</Button>
+                <Button to="/eventos" variante="accion">Nueva reserva</Button>
             </EncabezadoPagina>
             {cargando && <Loader mensaje="Cargando tus reservas…" />}
             {!cargando && error && (
@@ -72,7 +72,7 @@ export default function MisReservasPage() {
             {!cargando && !error && datos.length === 0 && (
                 <MensajeEstado
                     titulo="Todavía no tenés reservas"
-                    accion={<Button to="/#agenda" variante="accion">Ver la agenda</Button>}
+                    accion={<Button to="/eventos" variante="accion">Ver los eventos</Button>}
                 >
                     <p>Elegí un partido o evento de la agenda y reservá tu mesa.</p>
                 </MensajeEstado>

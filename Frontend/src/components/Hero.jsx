@@ -1,50 +1,34 @@
 import Button from "./Button.jsx";
-import EventoDatos from "./EventoDatos.jsx";
-import EventoEtiquetas from "./EventoEtiquetas.jsx";
 import ImagenPendiente from "./ImagenPendiente.jsx";
-import Loader from "./Loader.jsx";
-import { estaCompleto } from "../utils/eventos.js";
+import { urlArchivo } from "../services/api.js";
 import "./Hero.css";
-function HeroEvento({ evento }) {
+export default function Hero({ producto }) {
     return (
-        <>
-            <p className="hero__antetitulo">Próximo evento destacado</p>
-            <EventoEtiquetas evento={evento} />
-            <h1 className="hero__titulo">{evento.titulo}</h1>
-            <span className="hero__linea" aria-hidden="true" />
-            <EventoDatos evento={evento} variante="oscuro" />
-            <Button to={`/eventos/${evento.id}`} variante="accion" tamanio="grande" className="hero__cta">
-                {estaCompleto(evento) ? "Ver el evento" : "Reservá tu mesa"}
-            </Button>
-        </>
-    );
-}
-function HeroMarca() {
-    return (
-        <>
-            <p className="hero__antetitulo">La casa del Megabaldazo</p>
-            <h1 className="hero__titulo">Partidos, amigos y baldes de hamburguesas</h1>
-            <span className="hero__linea" aria-hidden="true" />
-            <p className="hero__texto">Mirá los partidos en nuestras pantallas y reservá tu mesa para el próximo evento.</p>
-            <Button to="/#agenda" variante="accion" tamanio="grande" className="hero__cta">
-                Ver la agenda
-            </Button>
-        </>
-    );
-}
-export default function Hero({ evento, cargando }) {
-    return (
-        <section className="hero" aria-label="Portada">
+        <section className="hero" aria-labelledby="hero-titulo">
             <div className="contenedor hero__contenido">
-                <ImagenPendiente descripcion="foto del Megabaldazo o del salón con las pantallas" className="hero__imagen" />
-                <div className="hero__info">
-                    {cargando ? (
-                        <Loader mensaje="Buscando el próximo evento…" claro />
-                    ) : evento ? (
-                        <HeroEvento evento={evento} />
+                <div className="hero__imagen">
+                    {producto?.imagen ? (
+                        <img src={urlArchivo(producto.imagen)} alt={`${producto.nombre}: ${producto.descripcion}`} />
                     ) : (
-                        <HeroMarca />
+                        <ImagenPendiente descripcion="foto del Megabaldazo" className="hero__sin-imagen" />
                     )}
+                </div>
+                <div className="hero__info">
+                    <p className="hero__antetitulo">La casa del Megabaldazo</p>
+                    <h1 id="hero-titulo" className="hero__titulo">Hamburguesas ahumadas y baldes para compartir</h1>
+                    <span className="hero__linea" aria-hidden="true" />
+                    <p className="hero__texto">
+                        Carnes ahumadas, salsa CHS y el balde más viral de Buenos Aires. Vení a comer o a ver el partido
+                        en nuestras pantallas.
+                    </p>
+                    <div className="hero__acciones">
+                        <Button to="/menu" variante="accion" tamanio="grande" className="hero__cta">
+                            Ver el menú
+                        </Button>
+                        <Button to="/eventos" variante="principal" tamanio="grande">
+                            Reservá para el partido
+                        </Button>
+                    </div>
                 </div>
             </div>
         </section>

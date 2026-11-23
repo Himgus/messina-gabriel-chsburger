@@ -1,6 +1,6 @@
 import { TipoEvento, LIMITES_EVENTO } from "./constantes.js";
 import { esFechaFutura } from "./fechas.js";
-export const validarEvento = (valores, { esNuevo }) => {
+export const validarEvento = (valores, { esNuevo, capacidadLocal }) => {
     const errores = {};
     const titulo = valores.titulo.trim();
     if (!titulo) {
@@ -24,8 +24,8 @@ export const validarEvento = (valores, { esNuevo }) => {
     const cupo = Number(valores.cupo);
     if (valores.cupo === "" || !Number.isInteger(cupo) || cupo <= 0) {
         errores.cupo = "El cupo debe ser un número entero mayor a 0.";
-    } else if (cupo > LIMITES_EVENTO.CUPO_MAX) {
-        errores.cupo = `El cupo no puede superar la capacidad del local (${LIMITES_EVENTO.CUPO_MAX} personas).`;
+    } else if (cupo > capacidadLocal) {
+        errores.cupo = `El cupo no puede superar la capacidad del local (${capacidadLocal} personas).`;
     }
     const montoSenia = Number(valores.montoSenia);
     if (valores.requiereSenia && (valores.montoSenia === "" || !Number.isFinite(montoSenia) || montoSenia <= 0)) {

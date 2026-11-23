@@ -9,5 +9,6 @@ router.get("/", eventoController.getAll);
 router.get("/:id", eventoController.getById);
 router.post("/", soloAdministrador, eventoController.create);
 router.put("/:id", soloAdministrador, eventoController.update);
+router.patch("/:id/suspender", soloAdministrador, eventoController.suspender);
 router.delete("/:id", soloAdministrador, eventoController.delete);
 export default router;

@@ -21,6 +21,11 @@ class EventoController {
         const evento = eventoService.update(id, req.body);
         return successResponse(res, evento);
     }
+    suspender(req, res) {
+        const id = parseId(req.params.id);
+        const evento = eventoService.suspender(req.usuario, id, req.body);
+        return successResponse(res, evento);
+    }
     delete(req, res) {
         const id = parseId(req.params.id);
         const evento = eventoService.delete(id);

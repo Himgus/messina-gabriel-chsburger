@@ -1,0 +1,39 @@
+.historial {
+    border-top: 2px solid var(--color-borde);
+    padding-top: 0.75rem;
+}
+.historial__resumen {
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.historial__lista {
+    margin: 0.75rem 0 0;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--color-principal);
+    list-style: none;
+}
+.historial__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.65rem;
+}
+.historial__item::before {
+    content: "";
+    position: absolute;
+    top: 0.4rem;
+    left: -1.65rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 2px solid var(--color-secundario);
+    border-radius: 50%;
+    background-color: var(--color-principal);
+}
+.historial__estado {
+    font-weight: 700;
+}
+.historial__detalle {
+    color: var(--color-texto-suave);
+    font-size: 0.85rem;
+}

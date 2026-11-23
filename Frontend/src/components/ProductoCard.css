@@ -2,26 +2,90 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    text-align: center;
+    overflow: hidden;
+    border: 3px solid var(--color-secundario);
+    border-radius: var(--radio-grande);
+    background-color: var(--color-superficie);
+    color: var(--color-texto);
+    box-shadow: var(--sombra-marcada);
 }
 .producto-card__imagen {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1;
-    margin-bottom: 1rem;
-    border-radius: var(--radio-grande);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 190px;
+    padding: 0.75rem;
+    border-bottom: 3px solid var(--color-secundario);
+    background: linear-gradient(var(--color-principal) 0 50%, var(--color-secundario) 50% 100%);
 }
-img.producto-card__imagen {
-    border: 3px solid var(--color-principal);
-    object-fit: cover;
+.producto-card__imagen img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.35));
+}
+.producto-card__sin-imagen {
+    width: 100%;
+    height: 100%;
+    color: var(--color-secundario);
+}
+.producto-card--agotado .producto-card__imagen img {
+    filter: grayscale(1);
+    opacity: 0.6;
+}
+.producto-card__agotado {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+}
+.producto-card__cuerpo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem 1.1rem 1.2rem;
+}
+.producto-card__encabezado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
 }
 .producto-card__nombre {
-    padding-bottom: 0.4rem;
-    border-bottom: 4px solid var(--color-principal);
-    color: var(--color-texto-claro);
+    margin: 0;
+    font-size: 1.45rem;
+}
+.producto-card__precio {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radio-chico);
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+    font-family: var(--fuente-titulos);
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
 }
 .producto-card__descripcion {
-    margin: 0.5rem 0 0;
-    color: #d6d6d6;
+    margin: 0;
+    color: var(--color-texto-suave);
     font-size: 0.925rem;
+}
+.producto-card__opciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: auto 0 0;
+    padding: 0.5rem 0 0;
+    list-style: none;
+}
+.producto-card__opcion {
+    display: inline-flex;
+    gap: 0.35rem;
+    padding: 0.2rem 0.55rem;
+    border: 2px solid var(--color-secundario);
+    border-radius: 999px;
+    background-color: #fff3c4;
+    font-size: 0.8rem;
 }

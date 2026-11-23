@@ -1,0 +1,12 @@
+import { Router } from "express";
+import usuarioController from "../controllers/UsuarioController.js";
+import { autenticar } from "../middlewares/autenticar.js";
+import { autorizar } from "../middlewares/autorizar.js";
+import { Rol } from "../enums/Rol.js";
+const router = Router();
+router.use(autenticar, autorizar(Rol.ADMINISTRADOR));
+router.get("/", usuarioController.getAll);
+router.get("/:id", usuarioController.getById);
+router.post("/", usuarioController.create);
+router.patch("/:id/estado", usuarioController.cambiarEstado);
+export default router;

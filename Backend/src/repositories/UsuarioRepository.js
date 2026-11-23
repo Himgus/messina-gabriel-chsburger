@@ -35,5 +35,13 @@ class UsuarioRepository {
         usuarios.push(usuario);
         return usuario;
     }
+    update(id, datos) {
+        const usuario = this.findById(id);
+        if (!usuario) {
+            return null;
+        }
+        Object.assign(usuario, datos, { id });
+        return usuario;
+    }
 }
 export default new UsuarioRepository();

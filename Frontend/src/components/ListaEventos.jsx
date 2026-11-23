@@ -2,8 +2,7 @@ import Button from "./Button.jsx";
 import EventoCard from "./EventoCard.jsx";
 import Loader from "./Loader.jsx";
 import MensajeEstado from "./MensajeEstado.jsx";
-import Seccion from "./Seccion.jsx";
-function ContenidoAgenda({ eventos, cargando, error, onReintentar }) {
+export default function ListaEventos({ eventos, cargando, error, onReintentar }) {
     if (cargando) {
         return <Loader mensaje="Cargando la agenda…" />;
     }
@@ -26,24 +25,12 @@ function ContenidoAgenda({ eventos, cargando, error, onReintentar }) {
         );
     }
     return (
-        <ul className="grilla agenda__lista" role="list">
+        <ul className="grilla" role="list">
             {eventos.map((evento) => (
                 <li key={evento.id}>
                     <EventoCard evento={evento} />
                 </li>
             ))}
         </ul>
-    );
-}
-export default function Agenda(props) {
-    return (
-        <Seccion
-            id="agenda"
-            titulo="Agenda"
-            subtitulo="Próximos partidos y eventos en CHS Burger. Elegí uno y reservá tu mesa antes de que se llene."
-            variante="amarilla"
-        >
-            <ContenidoAgenda {...props} />
-        </Seccion>
     );
 }
